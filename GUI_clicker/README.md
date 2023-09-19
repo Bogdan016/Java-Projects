@@ -3,7 +3,9 @@
 Clicker Game is a simple Java Swing-based game where the player has to click a button as many times as possible within a 30-second time limit. 
 The game keeps track of the number of clicks made by the player and displays the final score when the time runs out.
 
+![Example](Example.png)
 
+![Example](Example(2).png)
 
 ## How to Play
 - Run the application.
