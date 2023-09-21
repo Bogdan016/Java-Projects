@@ -93,8 +93,6 @@ public class GamePanel extends JPanel implements ActionListener{
 		
 			boolean isLightGreen = true;
 			
-			
-			
 			for (int i = 0; i < bodyParts; i++) {
 				
 				
@@ -103,10 +101,20 @@ public class GamePanel extends JPanel implements ActionListener{
 			        // Set the color and draw the head (rectangle).
 			        g.setColor(new Color(31, 119, 6));  // Light green for the head
 			        g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
-
+			        
+			        g.fillRoundRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE, 30, 5); // Rounded rectangle
+			        
 			        g.setColor(Color.BLACK);
-			        g.fillOval(x[i] + 10, y[i] + 5, 5, 5);  // Left eye
-			        g.fillOval(x[i] + 10, y[i] + 15, 5, 5); // Right eye
+			        if(direction == 'R'|| direction == 'L')
+			        {
+			        	g.fillOval(x[i] + 10, y[i] + 5, 5, 5);  // Left eye
+				        g.fillOval(x[i] + 10, y[i] + 15, 5, 5); // Right eye
+			        }
+			        else if (direction == 'U' || direction == 'D')
+			        {
+			        	g.fillOval(x[i] + 5, y[i] + 10, 5, 5);  // Left eye
+				        g.fillOval(x[i] + 15, y[i] + 10, 5, 5); // Right eye
+			        }
 			        
 				}
 				else {
