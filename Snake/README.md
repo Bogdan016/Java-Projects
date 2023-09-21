@@ -1,5 +1,7 @@
 # Snake Game
 
+![Example](Example1.png)
+
 ## Description
 The Snake Game is a classic and addictive arcade game where the player controls a snake to eat fruits and grow in size. The goal is to achieve the highest possible score without colliding with walls or the snake's own body.
 
