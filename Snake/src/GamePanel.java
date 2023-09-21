@@ -22,6 +22,13 @@ public class GamePanel extends JPanel implements ActionListener{
 	Timer timer;                             // Timer object for game loop
 	Random random;                           // Random object for generating random numbers
 
+
+    // Override the paintComponent method to draw any background or graphics
+    
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Draw background or graphics here
+    }
 	
 	GamePanel() {
 	    // Initialize a Random object to generate random numbers.
@@ -240,7 +247,14 @@ public class GamePanel extends JPanel implements ActionListener{
 	    FontMetrics metrics2 = getFontMetrics(g.getFont());
 	    g.drawString("Score: " + score, (WIDTH - metrics2.stringWidth("Score: " + score)) / 2, HEIGHT / 4);
 	}
-
+	
+	public void startMenu(Graphics g) {
+		g.setColor(Color.BLUE);
+	    g.setFont(new Font("San Francisco", Font.PLAIN, WIDTH/6));
+	    
+	    FontMetrics metrics = getFontMetrics(g.getFont());
+	    g.drawString("Snake", (WIDTH - metrics.stringWidth("Game Over")) / 2, HEIGHT / 2);
+	}
 	
 	public void actionPerformed(ActionEvent e) {
 		
