@@ -32,7 +32,5 @@ Use the arrow keys (or designated controls) to control the snake's direction.
 - Game Over
     -  The game ends when the snake collides with a wall or itself.
     -  The final score is displayed on the game over screen.
-The game ends when the snake collides with a wall or itself.
-The final score is displayed on the game over screen.
 
 [//]: <> (Restart)
