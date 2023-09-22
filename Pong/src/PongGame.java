@@ -57,7 +57,11 @@ public class PongGame {
         }
 
         public void newBall() {
-            // Implement this method
+            
+        	//random = new Random();
+        	ball = new Ball((WIDTH/2) - (BALL_SIZE/2), (HEIGHT/2)-(BALL_SIZE/2),BALL_SIZE,BALL_SIZE);
+        	
+        	
         }
 
         public void newPaddles() {
@@ -76,15 +80,65 @@ public class PongGame {
         public void draw(Graphics g) {
             p1.draw(g);
             p2.draw(g);
+            ball.draw(g);
         }
 
         public void move() {
-            // Implement this method
+            p1.move();
+            p2.move();
+            ball.move();
         }
 
         public void collision() {
             
         	
+        	//ball collisions
+        	if(ball.y <=0) {
+        		ball.setYDirection(- ball.ySpeed);
+        	}
+        	if(ball.y >= HEIGHT-BALL_SIZE) {
+        		ball.setYDirection(- ball.ySpeed);
+        	}
+        	
+        	if(ball.intersects(p1)) {
+        		ball.xSpeed *= -1;
+        		if(ball.ySpeed<0) {
+        			ball.ySpeed--;
+        		}
+        		
+        		ball.setXDirection(ball.xSpeed);
+        		ball.setYDirection(ball.ySpeed);
+        	}
+        	
+        	if(ball.intersects(p2)) {
+        		ball.xSpeed *= -1;
+        		if(ball.ySpeed<0) {
+        			ball.ySpeed--;
+        		}
+        		
+        		ball.setXDirection(-ball.xSpeed);
+        		ball.setYDirection(ball.ySpeed);
+        		
+        	}
+        	
+        	//stops paddles at window edges
+        	
+        	if(p1.y<=0) {
+        		p1.y = 0;
+        	}
+        	if(p1.y >= (HEIGHT-PADDLE_HEIGHT)) {
+        		p1.y = HEIGHT-PADDLE_HEIGHT;
+        	}
+        	
+        	if(p2.y<=0) {
+        		p2.y = 0;
+        	}
+        	if(p2.y >= (HEIGHT-PADDLE_HEIGHT)) {
+        		p2.y = HEIGHT-PADDLE_HEIGHT;
+        	}
+        	
+        	
+
         }
 
         public void run() {	
@@ -109,11 +163,13 @@ public class PongGame {
 
         public class ActionListener extends KeyAdapter {
             public void keyPressed(KeyEvent e) {
-                // Implement this method
+                p1.keyPressed(e);
+                p2.keyPressed(e);
             }
 
             public void keyReleased(KeyEvent e) {
-                // Implement this method
+                p1.keyReleased(e);
+                p2.keyReleased(e);
             }
         }
     }
@@ -123,35 +179,76 @@ public class PongGame {
     	int id;
     	int ySpeed;
     	
+    	
         Paddles(int x, int y, int PADDLE_WIDTH, int PADDLE_HEIGHT, int id) {
             super(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);			
             this.id = id;
         }
 
         public void keyPressed(KeyEvent e) {
-            // Implement this method
+
+        		if(id==1) {		//player 1
+        			if(e.getKeyCode()==KeyEvent.VK_W) {
+        				setYDirection(-10);
+        				move();
+        			}
+        			if(e.getKeyCode()==KeyEvent.VK_S) {
+        				setYDirection(10);
+        				move();
+        			}
+        		}
+        		
+        		if(id==2) {		//player 2
+        			if(e.getKeyCode()==KeyEvent.VK_UP) {
+        				setYDirection(-10);
+        				move();
+        			}
+        			if(e.getKeyCode()==KeyEvent.VK_DOWN) {
+        				setYDirection(10);
+        				move();
+        			}
+        		}
+        	
         }
 
         public void keyReleased(KeyEvent e) {
-            // Implement this method
+        	if(id==1) {		//player 1
+    			if(e.getKeyCode()==KeyEvent.VK_W) {
+    				setYDirection(0);
+    				move();
+    			}
+    			if(e.getKeyCode()==KeyEvent.VK_S) {
+    				setYDirection(0);
+    				move();
+    			}
+    		}
+    		
+    		if(id==2) {		//player 2
+    			if(e.getKeyCode()==KeyEvent.VK_UP) {
+    				setYDirection(0);
+    				move();
+    			}
+    			if(e.getKeyCode()==KeyEvent.VK_DOWN) {
+    				setYDirection(0);
+    				move();
+    			}
+    		}
         }
 
         public void setYDirection(int yDirection) {
-            // Implement this method
+            
+        	ySpeed = yDirection;
         }
 
         public void move() {
-            // Implement this method
+            
+        	y += ySpeed;
+        	
         }
 
         public void draw(Graphics g) {
             
-        	if(id==1) {
-        		g.setColor(Color.white);
-            }
-        	else {
-        		g.setColor(Color.white);
-        	}
+        	g.setColor(Color.white);
         	g.fillRect(x, y, width, height);
         }
     }
@@ -162,24 +259,47 @@ public class PongGame {
     	int xSpeed;
     	int ySpeed;
     	
-        Ball() {
-            // Add initialization code here if needed
+        Ball(int x, int y, int width, int height) {
+            
+        	super(x,y,width,height);
+        	random = new Random();
+        	
+        	int randomX = random.nextInt(2);
+        	if(randomX == 0) {
+        		randomX--;
+        	}
+        	setXDirection(randomX*2);
+        	
+        	int randomY = random.nextInt(2);
+        	if(randomY == 0) {
+        		randomY--;
+        	}
+        	setYDirection(randomY*2);
+        	
         }
 
         public void setXDirection(int randomXDirection) {
-            // Implement this method
+            
+        	xSpeed = randomXDirection;
+        	
         }
 
         public void setYDirection(int randomYDirection) {
-            // Implement this method
+            
+        	ySpeed = randomYDirection;
+        	
         }
 
         public void move() {
-            // Implement this method
+            
+        	x += xSpeed;
+        	y += ySpeed;
+        	
         }
 
         public void draw(Graphics g) {
-            // Implement this method
+            g.setColor(Color.white);
+            g.fillOval(x, y, height, width);
         }
     }
 
