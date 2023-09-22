@@ -1,5 +1,9 @@
 # Snake Game
 
+## Description
+The Snake Game is a classic and addictive arcade game where the player controls a snake to eat fruits and grow in size. 
+The goal is to achieve the highest possible score without colliding with walls or the snake's own body.
+
 ![Example](Example1.png)
 
 ![Example](Example2.png)
@@ -7,16 +11,11 @@
 ![Example](Example3.png)
 
 
-## Description
-The Snake Game is a classic and addictive arcade game where the player controls a snake to eat fruits and grow in size. The goal is to achieve the highest possible score without colliding with walls or the snake's own body.
-
 ## Features
 Intuitive and responsive controls.
 
 [//]: <> ( Increasing difficulty as the snake grows longer. )
 Fun and challenging gameplay for all ages.
-How to Play
-Starting the Game
 
 ## Launch the game application.
 [//]: <> (The game starts on the main menu screen.)
