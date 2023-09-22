@@ -33,7 +33,7 @@ public class PongGame {
         static final int HEIGHT = 555;
         static final Dimension SCREEN_SIZE = new Dimension(WIDTH, HEIGHT);
         static final int BALL_SIZE = 20;
-        static final int PADDLE_WIDTH = 25;
+        static final int PADDLE_WIDTH = 15;
         static final int PADDLE_HEIGHT = 100;
         Thread gameThread;
         Image image;
@@ -61,20 +61,19 @@ public class PongGame {
         	//random = new Random();
         	ball = new Ball((WIDTH/2) - (BALL_SIZE/2), (HEIGHT/2)-(BALL_SIZE/2),BALL_SIZE,BALL_SIZE);
         	
-        	
         }
 
         public void newPaddles() {
             
         	p1 = new Paddles(0,(HEIGHT/2)-(PADDLE_HEIGHT/2),PADDLE_WIDTH,PADDLE_HEIGHT,1);
-        	p2 = new Paddles(WIDTH-PADDLE_WIDTH,(HEIGHT/2)-(PADDLE_HEIGHT/2),PADDLE_WIDTH,PADDLE_HEIGHT,2);
+        	p2 = new Paddles(WIDTH-PADDLE_WIDTH-20,(HEIGHT/2)-(PADDLE_HEIGHT/2),PADDLE_WIDTH,PADDLE_HEIGHT,2);
         }
 
         public void paint(Graphics g) {
             image = createImage(getWidth(),getHeight());
             graphics = image.getGraphics();
             draw(graphics);
-            g.drawImage(image, 0, 0, this);
+            g.drawImage(image, 10, 0, this);
         }
 
         public void draw(Graphics g) {
@@ -111,7 +110,7 @@ public class PongGame {
         	}
         	
         	if(ball.intersects(p2)) {
-        		ball.xSpeed *= -1;
+        		ball.xSpeed *= 1;
         		if(ball.ySpeed<0) {
         			ball.ySpeed--;
         		}
@@ -178,7 +177,6 @@ public class PongGame {
     	
     	int id;
     	int ySpeed;
-    	
     	
         Paddles(int x, int y, int PADDLE_WIDTH, int PADDLE_HEIGHT, int id) {
             super(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);			
