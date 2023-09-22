@@ -32,18 +32,3 @@ The game ends when the snake collides with a wall or itself.
 The final score is displayed on the game over screen.
 
 [//]: <> (Restart)
-
-I believe that all the previously proposed solutions (apart from those that require specific implementations) result in the comments being included in the output HTML, even if they are not displayed.
-
-If you want a comment that is strictly for yourself (readers of the converted document should not be able to see it, even with "view source") you could (ab)use the link labels (for use with reference style links) that are available in the core Markdown specification:
-
-http://daringfireball.net/projects/markdown/syntax#link
-
-That is:
-
-[comment]: <> (This is a comment, it will not be included)
-[comment]: <> (in  the output file unless you use it in)
-[comment]: <> (a reference style link.)
-Or you could go further:
-
-[//]: <> (After a game over, click the "Play Again" button to start a new game.)
