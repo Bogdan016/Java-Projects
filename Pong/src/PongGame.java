@@ -54,6 +54,8 @@ public class PongGame {
             
             gameThread = new Thread(this);
             gameThread.start();
+            
+
         }
 
         public void newBall() {
@@ -79,9 +81,12 @@ public class PongGame {
             p1.draw(g);
             p2.draw(g);
             ball.draw(g);
+            score.draw(g);
+          
+        	Toolkit.getDefaultToolkit().sync();
+            
             g.setColor(Color.white);
         	g.fillRect((WIDTH/2) -30, 0, 10, HEIGHT);
-        	
         	
         	
         }
@@ -324,12 +329,17 @@ public class PongGame {
     	int p2;
     	
     	
-        Score(int WIDTH, int HEIGHT) {
-            // Add initialization code here if needed
+        Score(int WIDTH, int GHEIGHT) {
+            Score.WIDTH = WIDTH;
+            Score.HEIGHT = HEIGHT;
         }
 
         public void draw(Graphics g) {
-            // Implement this method
+        	g.setColor(Color.white);
+    	    g.setFont(new Font("Consolas", Font.PLAIN, 60));
+
+    	    g.drawString(String.valueOf(p1), 200, 50);
+    	    g.drawString(String.valueOf(p2), 700, 50);
         }
     }
 }
