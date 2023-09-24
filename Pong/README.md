@@ -2,6 +2,10 @@
 
 Welcome to the Pong Game! This project is a simple implementation of the classic Pong game using Java. Pong is a two-player game where each player controls a paddle, and the objective is to score points by hitting the ball past the opponent's paddle.
 
+[Example](Example.png)
+
+[Example](Example1.png)
+
 ## Features
 - Two-player gameplay
 - Realistic ball physics
