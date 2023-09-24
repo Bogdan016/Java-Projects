@@ -58,7 +58,6 @@ public class PongGame {
 
         public void newBall() {
             
-        	//random = new Random();
         	ball = new Ball((WIDTH/2) - (BALL_SIZE/2), (HEIGHT/2)-(BALL_SIZE/2),BALL_SIZE,BALL_SIZE);
         	
         }
@@ -80,6 +79,11 @@ public class PongGame {
             p1.draw(g);
             p2.draw(g);
             ball.draw(g);
+            g.setColor(Color.white);
+        	g.fillRect((WIDTH/2) -30, 0, 10, HEIGHT);
+        	
+        	
+        	
         }
 
         public void move() {
@@ -137,6 +141,17 @@ public class PongGame {
         	}
         	
         	
+        	if(ball.x <=0) {
+        		score.p2++;
+        		newPaddles();
+        		newBall();	
+        	}
+        	
+        	if(ball.x >= WIDTH - BALL_SIZE) {
+        		score.p1++;
+        		newPaddles();
+        		newBall();
+        	}
 
         }
 
@@ -266,13 +281,13 @@ public class PongGame {
         	if(randomX == 0) {
         		randomX--;
         	}
-        	setXDirection(randomX*2);
+        	setXDirection(randomX*3);
         	
         	int randomY = random.nextInt(2);
         	if(randomY == 0) {
         		randomY--;
         	}
-        	setYDirection(randomY*2);
+        	setYDirection(randomY*3);
         	
         }
 
