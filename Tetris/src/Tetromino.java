@@ -4,6 +4,7 @@ public class Tetromino {
 	
 	
 	int dropcounter = 0;
+	int direction = 1;
 	public Block b[] = new Block[4];
 	public Block t[] = new Block[4];
 	
@@ -26,6 +27,23 @@ public class Tetromino {
 	public void updatePos(int direction){
 		
 	}
+	
+	public void getD1() {
+		
+	}
+	
+	public void getD2() {
+		
+	}
+
+	public void getD3() {
+	
+	}
+
+	public void getD4() {
+	
+	}
+
 	
 	public void update(){
 		
@@ -57,7 +75,7 @@ public class Tetromino {
 			b[2].x += Block.SIZE;
 			b[3].x += Block.SIZE;
 			
-			KeyInput.LEFT = false;
+			KeyInput.RIGHT = false;
 		}
 		
 		dropcounter++;
