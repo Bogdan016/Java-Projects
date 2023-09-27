@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.JPanel;
+import javax.swing.*;
 
 public class GamePanel extends JPanel implements Runnable{
 	
@@ -15,6 +16,10 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		this.setBackground(Color.black);
 		this.setLayout(null);
+		
+		this.addKeyListener(new KeyInput());
+		this.setFocusable(true);
+		
 		
 		game = new GamePlay();
 	}
