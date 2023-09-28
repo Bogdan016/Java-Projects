@@ -7,6 +7,8 @@ public class Tetromino {
 	int direction = 1;
 	public Block b[] = new Block[4];
 	public Block t[] = new Block[4];
+	boolean LC, RC, TC, BC;	//collisions
+	
 	
 	public void create(Color color) {
 		b[0] = new Block(color);
@@ -52,8 +54,16 @@ public class Tetromino {
 	public void getD4() {
 	
 	}
-
 	
+	//movement collision
+	public void MCollision() {
+		
+	}
+	
+	//rotation collision
+	public void RCollision() {
+		
+	}
 	public void update(){
 		
 		if(KeyInput.UP) {

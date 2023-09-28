@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Random;
 
 public class GamePlay {
 	
@@ -30,10 +31,42 @@ public class GamePlay {
 			STARTPOSX = LEFT + (WIDTH/2) - Block.SIZE;
 			STARTPOSY = TOP + Block.SIZE;
 			
-			current = new OTetromino();
+			current = choose();
 			current.setPos(STARTPOSX, STARTPOSY);
 			
 		}
+		
+		private Tetromino choose() {
+			Tetromino tetromino = null;
+			int x = new Random().nextInt(7);
+			
+			switch(x) {
+			case 0:
+				tetromino = new LTetromino();
+				break;
+			case 1:
+				tetromino = new L2Tetromino();
+				break;
+			case 2:
+				tetromino = new OTetromino();
+				break;
+			case 3:
+				tetromino = new ITetromino();
+				break;
+			case 4:
+				tetromino = new TTetromino();
+				break;
+			case 5:
+				tetromino = new Z1Tetromino();
+				break;
+			case 6:
+				tetromino = new Z2Tetromino();
+				break;
+			}
+			return tetromino;
+			
+		}
+		
 		
 		public void update() {
 			current.update();
