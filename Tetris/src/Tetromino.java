@@ -26,6 +26,15 @@ public class Tetromino {
 	
 	public void updatePos(int direction){
 		
+		this.direction = direction;
+		b[0].x = t[0].x;
+		b[0].y = t[0].y;
+		b[1].x = t[1].x;
+		b[1].y = t[1].y;
+		b[2].x = t[2].x;
+		b[2].y = t[2].y;
+		b[3].x = t[3].x;
+		b[3].y = t[3].y;
 	}
 	
 	public void getD1() {
@@ -48,7 +57,17 @@ public class Tetromino {
 	public void update(){
 		
 		if(KeyInput.UP) {
-			
+			switch(direction) {
+			case 1: getD2(); 
+				    break;
+			case 2: getD3(); 
+		    		break;
+			case 3: getD4(); 
+		    		break;
+			case 4: getD1(); 
+					break;
+			}
+			KeyInput.UP = false;
 		}
 		
 		if(KeyInput.DOWN) {

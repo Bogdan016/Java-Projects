@@ -43,6 +43,8 @@ public class LTetromino extends Tetromino{
 		t[3].y = b[0].y + Block.SIZE;
 		
 		
+		updatePos(1);
+		
 		//	_			Default Direction:
 		// |_|			b[1]
 		// |_|_			b[0]			
@@ -62,7 +64,7 @@ public class LTetromino extends Tetromino{
 		t[3].x = b[0].x - Block.SIZE;
 		t[3].y = b[0].y + Block.SIZE;
 		
-		
+		updatePos(2);
 		//				Next Direction:
 		// 	_ _ _	
 		// |_|_|_|	 b[2] b[0] b[1]			
@@ -82,6 +84,7 @@ public class LTetromino extends Tetromino{
 		t[3].x = b[0].x - Block.SIZE;
 		t[3].y = b[0].y - Block.SIZE;
 		
+		updatePos(3);
 		
 		//  _ _		Default Direction:
 		// |_|_|		b[3] b[2]
@@ -93,15 +96,16 @@ public class LTetromino extends Tetromino{
 		t[0].x = b[0].x;
 		t[0].y = b[0].y;
 		
-		t[1].x = b[0].x ;
-		t[1].y = b[0].y - Block.SIZE;
+		t[1].x = b[0].x - Block.SIZE;
+		t[1].y = b[0].y ;
 		
-		t[2].x = b[0].x ;
-		t[2].y = b[0].y + Block.SIZE;
+		t[2].x = b[0].x + Block.SIZE;
+		t[2].y = b[0].y ;
 
 		t[3].x = b[0].x + Block.SIZE;
 		t[3].y = b[0].y - Block.SIZE;
 		
+		updatePos(4);
 		
 		//		_		Next Direction:
 		// 	_ _|_|			   b[3]

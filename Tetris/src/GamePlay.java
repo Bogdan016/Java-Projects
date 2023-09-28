@@ -30,7 +30,7 @@ public class GamePlay {
 			STARTPOSX = LEFT + (WIDTH/2) - Block.SIZE;
 			STARTPOSY = TOP + Block.SIZE;
 			
-			current = new LTetromino();
+			current = new ITetromino();
 			current.setPos(STARTPOSX, STARTPOSY);
 			
 		}
