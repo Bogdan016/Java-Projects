@@ -81,7 +81,21 @@ public class GamePlay {
 		
 		
 		public void update() {
+			
+			if(current.active ==false) {
+				staticBlocks.add(current.b[0]);
+				staticBlocks.add(current.b[1]);
+				staticBlocks.add(current.b[2]);
+				staticBlocks.add(current.b[3]);
+				
+				current = next;
+				current.setPos(STARTPOSX, STARTPOSY);
+				next = choose();
+				next.setPos(NEXTMINOX, NEXTMINOY);
+			}
+			else {
 			current.update();
+			}
 		}
 		
 		public void draw(Graphics2D g2) {
@@ -122,20 +136,26 @@ public class GamePlay {
 		            y += 25; 
 		        }
 */
+				//Draw static blocks
+			for(int i = 0; i < staticBlocks.size();i++) {
+				staticBlocks.get(i).draw(g2);			}
+			
 		        if(KeyInput.PAUSE) {
 		        	g2.setColor(Color.white);
 		        	//g2.drawRect(600, 70, 300, 150);
-		        	g2.fillRect(600, 70, 310, 150);
+		        	g2.fillRect(345, 225, 310, 150);
 		        	g2.setColor(Color.gray);
 		        	g2.setStroke(new BasicStroke(5f));
-		        	g2.drawRect(600, 70, 310, 150);
+		        	g2.drawRect(345, 225, 310, 150);
 		        	g2.setColor(Color.black);
 		        	g2.setFont(g2.getFont().deriveFont(50f));
-		        	g2.drawString("PAUSED",650,160);
+		        	g2.drawString("PAUSED",395,315);
 		        }
-		        
 		}
 }
+
+//500 - 155 , 300 -75
+//
 
 //block size 25 * 25
 //18 blocuri inaltime, 10 latime

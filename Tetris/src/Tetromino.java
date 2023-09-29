@@ -66,6 +66,8 @@ public class Tetromino {
 		RC = false;
 		BC = false;
 		
+		
+		BCollision();
 		//check playground collision
 		//left wall
 		
@@ -95,6 +97,7 @@ public class Tetromino {
 		RC = false;
 		BC = false;
 		
+		BCollision();
 		//check playground collision
 		//left wall
 		
@@ -117,6 +120,33 @@ public class Tetromino {
 			}
 		}
 	}
+	
+	//Blocks collision
+	private void BCollision() {
+		for(int i = 0; i<GamePlay.staticBlocks.size(); i++) {
+			int xt = GamePlay.staticBlocks.get(i).x;
+			int yt = GamePlay.staticBlocks.get(i).y;
+			//bottom
+			for(int j = 0; j<b.length; j++) {
+				if(b[j].y +Block.SIZE == yt && b[j].x == xt) {
+					BC=true;
+				}
+			}
+			//left
+			for(int j = 0; j<b.length; j++) {
+				if(b[j].x -Block.SIZE == xt && b[j].y == yt) {
+					LC = true;
+				}
+			}
+			//right
+			for(int j = 0; j<b.length; j++) {
+				if(b[j].x +Block.SIZE == xt && b[j].x == xt) {
+					RC = true;
+				}
+			}
+		}
+	}
+	
 	public void update(){
 		
 		if(KeyInput.UP) {
