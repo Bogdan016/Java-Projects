@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GamePlay {
@@ -14,6 +15,11 @@ public class GamePlay {
 		Tetromino current;
 		final int STARTPOSX;
 		final int STARTPOSY;
+		Tetromino next;
+		final int NEXTMINOX;
+		final int NEXTMINOY;
+		
+		public static ArrayList<Block> staticBlocks = new ArrayList();
 		
 		public static int dropInt = 60;		//drop the tetromino every 60 frames
 		
@@ -31,8 +37,14 @@ public class GamePlay {
 			STARTPOSX = LEFT + (WIDTH/2) - Block.SIZE;
 			STARTPOSY = TOP + Block.SIZE;
 			
+			NEXTMINOX = 470;
+			NEXTMINOY = 130;
+			
 			current = choose();
 			current.setPos(STARTPOSX, STARTPOSY);
+			
+			next = choose();
+			next.setPos(NEXTMINOX, NEXTMINOY);
 			
 		}
 		
@@ -76,7 +88,7 @@ public class GamePlay {
 			
 			//Play area
 			g2.setColor(Color.gray);
-			g2.setStroke(new BasicStroke(8f));
+			g2.setStroke(new BasicStroke(2f));
 
 			g2.drawRect(LEFT-4, TOP-4, WIDTH+8, HEIGHT+8);		// there is 1 pixel for the width of the frame
 				
@@ -84,7 +96,7 @@ public class GamePlay {
 			//Next tetromino area
 			g2.setFont(new Font ("Tetris", Font.PLAIN, 25));
 			g2.drawString("NEXT:", TOP + WIDTH + 110, TOP +25);
-			g2.drawRect(RIGHT + 50, TOP +50 , 100, 70);
+			g2.drawRect(RIGHT + 30, TOP  , 150, 150);
 			
 			//Draw the current tetromino
 			
@@ -92,8 +104,11 @@ public class GamePlay {
 				current.draw(g2);
 			}
 			
+			next.draw(g2);
+			
+			
 			g2.setStroke(new BasicStroke(3f));
-			g2.setColor(Color.white);
+			/*g2.setColor(Color.white);
 			  int x = 25 + LEFT;
 			  	for (int i = 0; i < 9; i++) {
 		            g2.drawLine(x, TOP, x, HEIGHT+70);
@@ -106,7 +121,7 @@ public class GamePlay {
 		        	g2.drawLine(LEFT, y, RIGHT, y);
 		            y += 25; 
 		        }
-
+*/
 		        if(KeyInput.PAUSE) {
 		        	g2.setColor(Color.white);
 		        	//g2.drawRect(600, 70, 300, 150);

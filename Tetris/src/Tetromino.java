@@ -8,7 +8,7 @@ public class Tetromino {
 	public Block b[] = new Block[4];
 	public Block t[] = new Block[4];
 	boolean LC, RC, TC, BC;	//collisions
-	public boolean
+	public boolean active = true;
 	
 	public void create(Color color) {
 		b[0] = new Block(color);
@@ -173,25 +173,34 @@ public class Tetromino {
 			KeyInput.RIGHT = false;
 		}
 		
-		dropcounter++;
-		if (dropcounter == GamePlay.dropInt) {
-			b[0].y += Block.SIZE;
-			b[1].y += Block.SIZE;
-			b[2].y += Block.SIZE;
-			b[3].y += Block.SIZE;
-			dropcounter = 0;
+		if(BC) {
+			active = false;
 		}
+		else {
+			dropcounter++;
+			if (dropcounter == GamePlay.dropInt) {
+				b[0].y += Block.SIZE;
+				b[1].y += Block.SIZE;
+				b[2].y += Block.SIZE;
+				b[3].y += Block.SIZE;
+				dropcounter = 0;
+			}
+		}
+		
+
 	}
+	
+
 	
 	public void draw(Graphics2D g2) {
 		
 		g2.setColor(b[0].color);
 		
-		//int margin = 2;
-		g2.fillRect(b[0].x, b[0].y, Block.SIZE, Block.SIZE);
-		g2.fillRect(b[1].x, b[1].y, Block.SIZE, Block.SIZE);
-		g2.fillRect(b[2].x, b[2].y, Block.SIZE, Block.SIZE);
-		g2.fillRect(b[3].x, b[3].y, Block.SIZE, Block.SIZE);
+		int m = 2;
+		g2.fillRect(b[0].x + m, b[0].y + m, Block.SIZE-(2*m), Block.SIZE-(2*m));
+		g2.fillRect(b[1].x + m, b[1].y + m, Block.SIZE-(2*m), Block.SIZE-(2*m));
+		g2.fillRect(b[2].x + m, b[2].y + m, Block.SIZE-(2*m), Block.SIZE-(2*m));
+		g2.fillRect(b[3].x + m, b[3].y + m, Block.SIZE-(2*m), Block.SIZE-(2*m));
 		
 	}
 }
