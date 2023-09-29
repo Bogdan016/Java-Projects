@@ -8,7 +8,7 @@ public class Tetromino {
 	public Block b[] = new Block[4];
 	public Block t[] = new Block[4];
 	boolean LC, RC, TC, BC;	//collisions
-	
+	public boolean
 	
 	public void create(Color color) {
 		b[0] = new Block(color);
@@ -28,15 +28,20 @@ public class Tetromino {
 	
 	public void updatePos(int direction){
 		
-		this.direction = direction;
-		b[0].x = t[0].x;
-		b[0].y = t[0].y;
-		b[1].x = t[1].x;
-		b[1].y = t[1].y;
-		b[2].x = t[2].x;
-		b[2].y = t[2].y;
-		b[3].x = t[3].x;
-		b[3].y = t[3].y;
+		RCollision();
+		
+		if(LC == false && RC == false && BC == false ) {
+			this.direction = direction;
+			b[0].x = t[0].x;
+			b[0].y = t[0].y;
+			b[1].x = t[1].x;
+			b[1].y = t[1].y;
+			b[2].x = t[2].x;
+			b[2].y = t[2].y;
+			b[3].x = t[3].x;
+			b[3].y = t[3].y;
+		}
+
 	}
 	
 	public void getD1() {
@@ -57,12 +62,60 @@ public class Tetromino {
 	
 	//movement collision
 	public void MCollision() {
+		LC = false;
+		RC = false;
+		BC = false;
 		
+		//check playground collision
+		//left wall
+		
+		for(int i = 0; i<b.length;i++) {
+			if(b[i].x == GamePlay.LEFT) {
+				LC = true;
+			}
+		}
+		//right wall
+		for(int i = 0; i<b.length;i++) {
+			if(b[i].x +Block.SIZE== GamePlay.RIGHT) {
+				RC = true;
+			}
+		}
+		
+		//bottom wall
+		for(int i = 0; i<b.length;i++) {
+			if(b[i].y + Block.SIZE == GamePlay.BOTTOM) {
+				BC = true;
+			}
+		}
 	}
 	
 	//rotation collision
 	public void RCollision() {
+		LC = false;
+		RC = false;
+		BC = false;
 		
+		//check playground collision
+		//left wall
+		
+		for(int i = 0; i<b.length;i++) {
+			if(t[i].x < GamePlay.LEFT) {
+				LC = true;
+			}
+		}
+		//right wall
+		for(int i = 0; i<b.length;i++) {
+			if(t[i].x + Block.SIZE > GamePlay.RIGHT) {
+				RC = true;
+			}
+		}
+		
+		//bottom wall
+		for(int i = 0; i<b.length;i++) {
+			if(t[i].y + Block.SIZE > GamePlay.BOTTOM) {
+				BC = true;
+			}
+		}
 	}
 	public void update(){
 		
@@ -80,29 +133,42 @@ public class Tetromino {
 			KeyInput.UP = false;
 		}
 		
+		MCollision();
+		
 		if(KeyInput.DOWN) {
-			b[0].y += Block.SIZE;
-			b[1].y += Block.SIZE;
-			b[2].y += Block.SIZE;
-			b[3].y += Block.SIZE;
-			dropcounter = 0;
+			
+			if(BC == false) {
+				b[0].y += Block.SIZE;
+				b[1].y += Block.SIZE;
+				b[2].y += Block.SIZE;
+				b[3].y += Block.SIZE;
+				dropcounter = 0;
+			}
+
 			KeyInput.DOWN = false;
 		}
 
 		if(KeyInput.LEFT) {
-			b[0].x -= Block.SIZE;
-			b[1].x -= Block.SIZE;
-			b[2].x -= Block.SIZE;
-			b[3].x -= Block.SIZE;
+			
+			if(LC == false) {
+				b[0].x -= Block.SIZE;
+				b[1].x -= Block.SIZE;
+				b[2].x -= Block.SIZE;
+				b[3].x -= Block.SIZE;
+			}
+
 			
 			KeyInput.LEFT = false;
 		}
 		
 		if(KeyInput.RIGHT) {
-			b[0].x += Block.SIZE;
-			b[1].x += Block.SIZE;
-			b[2].x += Block.SIZE;
-			b[3].x += Block.SIZE;
+			if(RC==false) {
+				b[0].x += Block.SIZE;
+				b[1].x += Block.SIZE;
+				b[2].x += Block.SIZE;
+				b[3].x += Block.SIZE;
+			}
+
 			
 			KeyInput.RIGHT = false;
 		}
@@ -121,7 +187,7 @@ public class Tetromino {
 		
 		g2.setColor(b[0].color);
 		
-		int margin = 2;
+		//int margin = 2;
 		g2.fillRect(b[0].x, b[0].y, Block.SIZE, Block.SIZE);
 		g2.fillRect(b[1].x, b[1].y, Block.SIZE, Block.SIZE);
 		g2.fillRect(b[2].x, b[2].y, Block.SIZE, Block.SIZE);

@@ -2,7 +2,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyInput implements KeyListener{
-public static boolean UP, DOWN, LEFT, RIGHT;
+public static boolean UP, DOWN, LEFT, RIGHT, PAUSE;
 	
 	public void keyPressed(KeyEvent e) {
 		
@@ -21,6 +21,14 @@ public static boolean UP, DOWN, LEFT, RIGHT;
 		
 		if(code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT) {
 			RIGHT = true;
+		}
+		if(code == KeyEvent.VK_SPACE) {
+			if(PAUSE) {
+				PAUSE = false;
+			}
+			else {
+				PAUSE = true;
+			}
 		}
 	}
 

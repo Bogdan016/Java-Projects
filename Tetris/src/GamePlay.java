@@ -107,6 +107,18 @@ public class GamePlay {
 		            y += 25; 
 		        }
 
+		        if(KeyInput.PAUSE) {
+		        	g2.setColor(Color.white);
+		        	//g2.drawRect(600, 70, 300, 150);
+		        	g2.fillRect(600, 70, 310, 150);
+		        	g2.setColor(Color.gray);
+		        	g2.setStroke(new BasicStroke(5f));
+		        	g2.drawRect(600, 70, 310, 150);
+		        	g2.setColor(Color.black);
+		        	g2.setFont(g2.getFont().deriveFont(50f));
+		        	g2.drawString("PAUSED",650,160);
+		        }
+		        
 		}
 }
 
