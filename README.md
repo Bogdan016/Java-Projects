@@ -1,8 +1,6 @@
 # Java-Projects
 A few coding projects i made while learning java
 
-# Java Projects
-
 This repository contains the following Java projects: GUI Clicker, Pong, and Snake. 
 
 Each project has its own unique features and gameplay mechanics. Below are the details of each project:
