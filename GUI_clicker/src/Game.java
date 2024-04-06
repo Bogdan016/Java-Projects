@@ -38,7 +38,6 @@ public class Game {
         System.exit(0);
     }
 
-
     public Score getScore() {
         return score;
     }
