@@ -13,6 +13,8 @@ The game keeps track of the number of clicks made by the player and displays the
 
 ![Example](GUI_clicker/Example.png)
 
+![GameOver](GUI_clicker/GameOver.png)
+
 ### How to Play
 - Run the application.
 - Click the "Click me" button as rapidly as you can within the time limit.
