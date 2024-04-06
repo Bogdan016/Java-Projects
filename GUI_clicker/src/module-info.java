@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * 
- */
-module GUI_clicker {
-}
